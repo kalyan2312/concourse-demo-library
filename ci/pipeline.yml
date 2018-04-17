@@ -1,0 +1,6 @@
+resources:
+- name: git-repo
+  type: git
+  source:
+    uri: https://github.com/mbhave/concourse-demo-library.git
+    branch: master
