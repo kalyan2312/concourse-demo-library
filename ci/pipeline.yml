@@ -16,6 +16,7 @@ resources:
     uri: ((artifactory-server))
     username: ((artifactory-username))
     password: ((artifactory-password))
+    build_name: example-library
 jobs:
 - name: build
   plan:
@@ -33,3 +34,11 @@ jobs:
       - name: git-repo
       run:
         path: git-repo/ci/scripts/build.sh
+  - put: artifactory-repo
+    params:
+      repo: libs-snapshot-local
+      build_number: "${BUILD_ID}"
+      folder: distribution-repository
+      build_number: "${BUILD_PIPELINE_NAME}-${BUILD_JOB_NAME}-${BUILD_NAME}"
+      build_uri: "https://192.168.50.6/teams/${BUILD_TEAM_NAME}/pipelines/${BUILD_PIPELINE_NAME}/jobs/${BUILD_JOB_NAME}/builds/${BUILD_NAME}"
+      disable_checksum_uploads: true
