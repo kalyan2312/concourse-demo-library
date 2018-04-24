@@ -10,6 +10,12 @@ resources:
   source:
     uri: https://github.com/mbhave/concourse-demo-library.git
     branch: master
+- name: artifactory-repo
+  type: artifactory-resource
+  source:
+    uri: ((artifactory-server))
+    username: ((artifactory-username))
+    password: ((artifactory-password))
 jobs:
 - name: build
   plan:
