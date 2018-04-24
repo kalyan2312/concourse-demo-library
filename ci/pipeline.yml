@@ -32,6 +32,8 @@ jobs:
           tag: 8-jdk-alpine
       inputs:
       - name: git-repo
+      outputs:
+      - name: distribution-repository
       run:
         path: git-repo/ci/scripts/build.sh
   - put: artifactory-repo
