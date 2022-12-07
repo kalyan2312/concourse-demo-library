@@ -41,4 +41,5 @@ jobs:
       repo: libs-snapshot-local
       build_number: "${BUILD_ID}"
       folder : distribution-repository
+      build_uri: "http://localhost:8080/teams/${BUILD_TEAM_NAME}/pipelines/${BUILD_PIPELINE_NAME}"
       disable_checksum_uploads: true
