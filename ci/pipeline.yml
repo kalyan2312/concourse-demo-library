@@ -1,9 +1,22 @@
+resource_types:
+- name: artifactory-resource
+  type: docker-image
+  source:
+    repository: springio/artifactory-resource
+    tag: 0.0.4
 resources:
 - name: git-repo
   type: git
   source:
-    uri: https://github.com/kalyan2312/concourse-demo-library.git
+    uri: https://github.com/mbhave/concourse-demo-library.git
     branch: master
+- name: artifactory-repo
+  type: artifactory-resource
+  source:
+    uri: ((artifactory-server))
+    username: ((artifactory-username))
+    password: ((artifactory-password))
+    build_name: example-library
 jobs:
 - name: build
   plan:
@@ -23,3 +36,11 @@ jobs:
       - name: distribution-repository
       run:
         path: git-repo/ci/scripts/build.sh
+  - put: artifactory-repo
+    params:
+      repo: libs-snapshot-local
+      build_number: "${BUILD_ID}"
+      folder: distribution-repository
+      build_number: "${BUILD_PIPELINE_NAME}-${BUILD_JOB_NAME}-${BUILD_NAME}"
+      build_uri: "https://192.168.50.6/teams/${BUILD_TEAM_NAME}/pipelines/${BUILD_PIPELINE_NAME}/jobs/${BUILD_JOB_NAME}/builds/${BUILD_NAME}"
+      disable_checksum_uploads: true
