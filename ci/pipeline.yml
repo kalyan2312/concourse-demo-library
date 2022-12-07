@@ -40,4 +40,5 @@ jobs:
     params:
       repo: libs-snapshot-local
       build_number: "${BUILD_ID}"
+      folder : distribution-repository
       disable_checksum_uploads: true
