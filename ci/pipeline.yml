@@ -13,9 +13,9 @@ resources:
 - name: artifactory-repo
   type: artifactory-resource
   source:
-    uri: ((artifactory-server))
-    username: ((artifactory-username))
-    password: ((artifactory-password))
+    uri: https://kalyan2328.jfrog.io/artifactory/libs-snapshot-local
+    username: kalyan
+    password: Kalyan@222
     build_name: example-library
 jobs:
 - name: build
