@@ -8,12 +8,12 @@ resources:
 - name: git-repo
   type: git
   source:
-    uri: https://github.com/mbhave/concourse-demo-library.git
+    uri: https://github.com/kalyan2312/concourse-demo-library.git
     branch: master
 - name: artifactory-repo
   type: artifactory-resource
   source:
-    uri: https://jcenter.bintray.com
+    uri: https://kalyan2328.jfrog.io/artifactory/libs-snapshot-local
     username: kalyan
     password: Kalyan@222
     build_name: example-library
