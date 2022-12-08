@@ -28,11 +28,4 @@
 			<version>3.8.0</version>
 		</dependency>
 	</dependencies>
-	<distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>a0id9kgiiia7l-artifactory-primary-0-snapshots</name>
-        <url>https://kalyan2328.jfrog.io/artifactory/libs-snapshot-local</url>
-    </snapshotRepository>
-</distributionManagement>
 </project>
